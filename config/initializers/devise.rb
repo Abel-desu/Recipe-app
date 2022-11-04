@@ -13,7 +13,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # rubocop:disable Layout/LineLength
-  # config.secret_key = 'abad7fd1b1a1ab1440d82c5e70ceacf70a8027b828c76973ecd56c649bdfbeb2cf96601311a0d30d527675fad56a600faa2e2515ecc79957b0d4c71a2bd0b519'
+  # config.secret_key = '35f0e0ea78c6d020a00485ae8540c9b87b506a9274573201940433a7c91c3708cc52cfdc18d2c9d8a67690531cb7000a924afc572cce083a4e41e9fa3bbf581e'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -125,7 +125,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '50dca24beac36077bfb16d710a6a93260e288d54e7185f03cf674a41995e18473a50530da16800f0f559c808de63f6abdd0c23844a38ce744e9fcd228ec19871'
+  # config.pepper = 'e762c2b979058580a3e266f8319a693514167abe670ce8eaa3f033905e47bb06adaf9b73f184059bba8c74e3a172fbd9e5c1652545e4a498e3d3f7e4c9a02f82'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -243,7 +243,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  config.scoped_views = true
+  # config.scoped_views = false
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -307,5 +307,5 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-  # rubocop:enable Layout/LineLength
 end
+# rubocop:enable Layout/LineLength
