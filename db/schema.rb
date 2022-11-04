@@ -7,31 +7,23 @@
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
-#
 # It's strongly recommended that you check this file into your version control system.
+
 # rubocop:disable Metrics/BlockLength
-ActiveRecord::Schema[7.0].define(version: 20_221_104_075_651) do
+
+ActiveRecord::Schema[7.0].define(version: 20_221_104_090_613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
   create_table 'foods', force: :cascade do |t|
     t.string 'name'
-    t.string 'measurement_Unit'
+    t.string 'measurement_unit'
     t.integer 'price'
     t.string 'quantity'
-    t.bigint 'user_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index ['user_id'], name: 'index_foods_on_user_id'
-  end
-
-  create_table 'inventoris', force: :cascade do |t|
-    t.string 'name'
-    t.string 'description'
     t.bigint 'user_id', null: false
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['user_id'], name: 'index_inventoris_on_user_id'
+    t.index ['user_id'], name: 'index_foods_on_user_id'
   end
 
   create_table 'recipe_foods', force: :cascade do |t|
@@ -82,7 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 20_221_104_075_651) do
   end
 
   add_foreign_key 'foods', 'users'
-  add_foreign_key 'inventoris', 'users'
   add_foreign_key 'recipe_foods', 'foods'
   add_foreign_key 'recipe_foods', 'recipes'
   add_foreign_key 'recipes', 'users'
