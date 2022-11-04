@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg" style="background: #425C81">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Recipe-App</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+    aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <%= link_to 'Foods', foods_path, :class => 'nav-link'  %>
+          <%= link_to 'Recipes', recipes_path, :class => 'nav-link' %>
+          <%= link_to 'Public recipes', public_recipes_index_path, :class => 'nav-link' %>
+          <%= link_to 'General Shopping list', general_shopping_lists_index_path, :class => 'nav-link' %>
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %>
+
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, data: { turbo: false }, :class => 'nav-link' %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link' %>
+          <%= link_to "Log in", new_user_session_path, :class => 'nav-link' %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

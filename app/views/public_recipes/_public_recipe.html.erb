@@ -1,0 +1,25 @@
+<div id="<%= dom_id recipe %>" class="container border m-5 p-3 row">
+  <div class="col-4">
+    <h2>
+      <%= link_to recipe.name, recipe %>
+    </h2>
+    <div>
+      By: <%= recipe.user.name %>
+    </div>
+  </div>
+
+  <div class="col-8">
+    <div>
+      Total food items : <%= recipe.foods.count %>
+    </div>
+    <div>
+      Total price : $
+      <% totalsum = 0%>
+      <% recipe.recipe_foods.each do |foo| %>
+        <% totalsum += foo.quantity * foo.food.price %>
+      <% end %>
+      <%= totalsum %>
+    </div>
+  </div>
+
+</div>
