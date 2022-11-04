@@ -1,5 +1,4 @@
 class Food < ApplicationRecord
-  #   has_many :recipe_food, dependent: :destroy
-  #   has_many :inventory_food, dependent: :destroy
-  belongs_to :user, foreign_key: 'user_id'
+  belongs_to :user
+  has_many :recipe_foods
 end

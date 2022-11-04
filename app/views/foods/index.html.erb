@@ -1,26 +1,30 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Foods</h1>
-<%= link_to "Add food", new_food_path %>
-<div class="food">
-<table class="teble">
-<thead>
-  <tr class="table-col">
-    <th>Food </th>
-    <th>Measurement Unit </th> 
-    <th>Price</th>
-    <th>Action</th>
-  </tr>
-  </thead>
-  <tbody>
- <% @foods.each do |food| %>
-  <tr>
-    <td><%= link_to food.name, food, style: "text-decoration: none"%></td>
-    <td><%=food.measurement_unit %></td>
-    <td><%=food.price %></td>
-    <td> <%= button_to "Delete", food, method: :delete %></td>
-  </tr>
-  <% end %>
-  </tbody>
- </table>
+<div class="d-flex flex-column d-flex justify-content-center mx-auto" style="width: 80%;">
+  <%= link_to "New food", new_food_path %>
+  <table class="min-w-full bg-white">
+    <thead class="p-3 mb-2 bg-secondary text-white">
+      <tr class="ml-1">
+        <th class="border border-slate-600">Food</th>
+        <th class="border border-slate-600">Measurement Unit</th>
+        <th class="border border-slate-600">Unit Price</th>
+        <th class="border border-slate-600">Action</th>
+      </tr>
+    </thead>
+    <tbody class="text-gray-700">
+      <% @foods.each do |food|%>
+        <tr class="odd:bg-red-300">
+          <td class="border border-slate-600 text-center"><%= food.name%></td>
+          <td class="border border-slate-600 text-center"><%= food.measurement_unit%></td>
+          <td class="border border-slate-600 text-center"><%= food.price%></td>
+          <td class="border border-slate-600 text-center">
+            <%= link_to "Delete", food_path(food), :class => "hover:text-red-600",
+            data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Do you want to delete #{food.name}?"
+                  }%>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
 </div>
+

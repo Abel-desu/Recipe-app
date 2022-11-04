@@ -1,21 +1,22 @@
 Rails.application.routes.draw do
-  resources :foods
+  get 'general_shopping_lists/index'
+  get 'public_recipes/index'
+  get 'public_recipes/show'
   devise_for :users
-  resources :users
-  root 'users#index'
 
-  get 'recipe_foods/:id/new', to: 'recipe_foods#new'
-  delete 'recipe_foods/:id/destroy/:food_id', to: 'recipe_foods#destroy'
-  post 'recipe_foods/:id/create', to: 'recipe_foods#create'
-
-  resources :recipes, only: %i[index show destroy new create] do
-    resources :recipe_foods, only: %i[index edit destroy]
+  devise_scope  :user do
+    get 'users/sign_out' => 'devise/sessions#destroy'
   end
 
-  namespace :public_recipes do
-    get '', action: 'index'
-    get '/:id', action: 'show'
-  end
+  root 'foods#index'
+   
+  resources :foods #[:index, :destroy, :new, :show]
+  get '/users', to: 'foods#index'
+
+  resources :users 
+  resources :recipe_foods #[:index, :destroy, :new, :show]
+  resources :recipes, only: [:index, :destroy, :new, :create, :show]
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
