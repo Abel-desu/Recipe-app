@@ -7,10 +7,9 @@
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
+#
 # It's strongly recommended that you check this file into your version control system.
-
 # rubocop:disable Metrics/BlockLength
-
 ActiveRecord::Schema[7.0].define(version: 20_221_104_090_613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
@@ -27,9 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 20_221_104_090_613) do
   end
 
   create_table 'recipe_foods', force: :cascade do |t|
-    t.string 'quantity'
-    t.bigint 'recipe_id'
-    t.bigint 'food_id'
+    t.integer 'quantity'
+    t.bigint 'recipe_id', null: false
+    t.bigint 'food_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['food_id'], name: 'index_recipe_foods_on_food_id'
@@ -41,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 20_221_104_090_613) do
     t.integer 'preparation_time'
     t.integer 'cooking_time'
     t.string 'description'
-    t.string 'public'
+    t.boolean 'public'
     t.bigint 'user_id'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
